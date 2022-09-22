@@ -76,6 +76,7 @@ public class Main {
             }
         }
         System.out.println("Bye Bye");
+        scanner.close();
     }
 
     private static void printMenu() {
