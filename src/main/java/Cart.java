@@ -3,7 +3,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class Cart implements Sort {
+public class Cart implements Sort, ReturnProduct {
     private final Map<Goods, Integer> cart = new HashMap<>();
 
     private void addToCart(Goods product, int amount) {
@@ -28,9 +28,9 @@ public class Cart implements Sort {
             } catch (NumberFormatException e) {
                 System.out.println("Expected NUM");
             }
-            if (containProduct(hashCode) && amountToDel != 0) {
+            if (productExist(hashCode) && amountToDel != 0) {
                 int deleted;
-                Goods product = returnProduct(hashCode);
+                Goods product = getProductByHash(hashCode);
                 if (cart.get(product) < amountToDel) {
                     deleted = cart.get(product);
                     cart.remove(product);
@@ -110,7 +110,8 @@ public class Cart implements Sort {
         }
     }
 
-    public boolean containProduct(int hashCode) {
+    @Override
+    public boolean productExist(int hashCode) {
         for (Goods product : cart.keySet()) {
             if (product.hashCode() == hashCode) {
                 return true;
@@ -119,7 +120,8 @@ public class Cart implements Sort {
         return false;
     }
 
-    public Goods returnProduct(int hashCode) {
+    @Override
+    public Goods getProductByHash(int hashCode) {
         for (Goods product : cart.keySet()) {
             if (product.hashCode() == hashCode) {
                 return product;

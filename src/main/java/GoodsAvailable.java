@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class GoodsAvailable implements Sort {
+public class GoodsAvailable implements Sort, ReturnProduct {
     private final Map<Integer, Goods> goods = new HashMap<>();
 
     public void addProduct(Goods product) {
@@ -49,10 +49,12 @@ public class GoodsAvailable implements Sort {
         goods.values().stream().sorted(Comparator.comparing(Goods::getPrice).reversed()).forEach(System.out::println);
     }
 
+    @Override
     public boolean productExist(int hashCode) {
         return goods.containsKey(hashCode);
     }
 
+    @Override
     public Goods getProductByHash(int hashCode) {
         return goods.get(hashCode);
     }
