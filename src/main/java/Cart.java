@@ -19,7 +19,8 @@ public class Cart implements Sort {
 
     public void removeFromCart(String input) {
         String[] delete = input.split(",");
-        if (delete.length == 3) {
+        final int amountObjectsInArrayNeeded = 3;
+        if (delete.length == amountObjectsInArrayNeeded) {
             int amountToDel = 0;
             int hashCode = (delete[0].trim() + delete[1].trim()).toLowerCase().hashCode();
             try {
@@ -89,7 +90,8 @@ public class Cart implements Sort {
                 break;
             }
             String[] product = input.split(",");
-            if (product.length == 3) {
+            final int amountObjectsInArrayNeeded = 3;
+            if (product.length == amountObjectsInArrayNeeded) {
                 int hashOfProduct = (product[0].trim() + product[1].trim()).toLowerCase().hashCode();
                 int amount = 0;
                 try {

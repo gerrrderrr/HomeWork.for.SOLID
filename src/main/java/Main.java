@@ -120,7 +120,8 @@ public class Main {
             case 10 -> {
                 String item = scanner.nextLine();
                 String[] hash = item.split(",");
-                if (hash.length == 2) {
+                final int amountObjectsInArrayNeeded = 2;
+                if (hash.length == amountObjectsInArrayNeeded) {
                     int hashCode = (hash[0].trim() + hash[1].trim()).toLowerCase().hashCode();
                     if (list.productExist(hashCode)) {
                         System.out.println(list.getProductByHash(hashCode).isExpired());
